@@ -1,0 +1,49 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@font-face {
+  font-family: Starjedi;
+  src: url("/assets/fonts/Starjedi.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Starjhol;
+  src: url("/assets//fonts/Starjhol.ttf") format("truetype");
+}
+
+:root {
+  --text-yellow-color: rgb(255, 232, 31);
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h4 {
+  font-family: "Starjhol";
+  color: var(--text-yellow-color);
+}
+
+h5 {
+  font-family: "Starjedi";
+  color: var(--text-yellow-color);
+}
+
+.full-modal {
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  max-height: 100% !important;
+  height: 100% !important;
+}
+
+.modal-content {
+  height: 100%;
+  background: transparent;
+}

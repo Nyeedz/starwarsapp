@@ -1,0 +1,60 @@
+.floating-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 2);
+  border-radius: 50%;
+  bottom: 25px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  height: 56px;
+  right: 25px;
+  transition: all 200ms ease-out;
+  width: 56px;
+  position: fixed;
+  :hover {
+    color: #333;
+    background-color: rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+  }
+  i {
+    color: #6f6f6f;
+  }
+}
+form {
+  z-index: 4;
+  .input-group-prepend {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0;
+    margin: 0;
+  }
+
+  .input-group-text {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    i {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+  .form-group {
+    input[type="text"] {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: rgba(255, 255, 255, 0.6) !important;
+      ::placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+      :-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+      ::-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+    }
+  }
+  .form-control:focus {
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.6) !important;
+  }
+}

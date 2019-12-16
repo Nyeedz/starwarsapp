@@ -1,0 +1,54 @@
+<div class="container d-flex flex-column w-100">
+  <h4>Filmes - {{ title }}</h4>
+  <div class="film-section">
+    <div class="film-card" *ngFor="let film of films; let i = index">
+      <div class="card-media">
+        <img
+          [src]="
+            film.episode_id
+              ? 'assets/episode_id' + film.episode_id + '.jpg'
+              : 'https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9416292&qld=90&l=430&a=-1=1006378633'
+          "
+          alt=""
+          class="card-media-img"
+        />
+        <span class="card-tag ">{{ film.director }}</span>
+      </div>
+      <div class="film-card-body">
+        <h2 class="film-card-header">{{ film.title }}</h2>
+        <div class="film-card-options">
+          <i
+            [class]="
+              viewedMovies.includes(film.url)
+                ? 'fas fa-eye-slash'
+                : 'fas fa-eye'
+            "
+            (click)="watched(film.url)"
+            tooltip="Marcar como assistido"
+            container="left"
+            *ngIf="title !== 'Adicionados'"
+          ></i>
+          <i
+            class="fas fa-edit"
+            (click)="editMovie(film, i)"
+            tooltip="Editar filme"
+            container="left"
+            *ngIf="title === 'Adicionados'"
+          ></i>
+          <i
+            class="fas fa-trash ml-2"
+            (click)="deleteMovie(i)"
+            tooltip="Excluir filme"
+            container="left"
+            *ngIf="title === 'Adicionados'"
+          ></i>
+        </div>
+        <p>Episódio {{ film.episode_id }}</p>
+        <a class="card-button card-button-link" (click)="filmDetail(film)">
+          Ver detalhes
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

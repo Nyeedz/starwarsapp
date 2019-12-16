@@ -1,0 +1,72 @@
+<app-loading *ngIf="loading"> </app-loading>
+<div class="content-wrapper" *ngIf="!loading">
+  <form class="mt-3 w-50" [formGroup]="form" (submit)="submit()">
+    <div class="form-group row">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pesquisar"
+          aria-label="Pesquisar"
+          aria-describedby="pesquisar"
+          formControlName="search"
+        />
+        <div class="input-group-prepend ml" (click)="submit()">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="w-80">
+    <table class="table table-borderless table-responsive">
+      <thead class="white">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Classificação</th>
+          <th scope="col">Altura média</th>
+          <th scope="col">Cor da pele</th>
+          <th scope="col">Linguagem</th>
+          <th scope="col">Terra natal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let specie of species">
+          <td>{{ specie.name }}</td>
+          <td>{{ specie.classification }}</td>
+          <td>{{ specie.average_height }}</td>
+          <td>
+            <div class="d-flex">
+              <div
+                *ngFor="let color of specie.skin_colors | commaToArray"
+                [style.color]="color"
+                [style.backgroundColor]="color"
+                style="flex: 1;"
+              >
+                {{ color }}
+              </div>
+            </div>
+          </td>
+          <td>{{ specie.language }}</td>
+          <td>
+            <div class="btn btn-light" (click)="openModal(specie.homeworld)">
+              Informações
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="next-page" *ngIf="next">
+      <button class="btn mt-3 btn-light float-right" (click)="changePage(true)">
+        Próxima página
+      </button>
+    </div>
+    <div class="next-page" *ngIf="previous">
+      <button
+        class="btn mr-3 mt-3 btn-light float-right"
+        (click)="changePage(false)"
+      >
+        Voltar
+      </button>
+    </div>
+  </div>
+</div>

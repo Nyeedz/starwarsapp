@@ -1,0 +1,41 @@
+<div class="film-modal">
+  <div class="close-button" (click)="bsModalRef.hide()">
+    <i class="fas fa-times-circle"></i>
+  </div>
+  <div class="film-media">
+    <img
+      class="cover"
+      [src]="
+        film.episode_id
+          ? 'assets/episode_id' + film.episode_id + '.jpg'
+          : 'https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9416292&qld=90&l=430&a=-1=1006378633'
+      "
+    />
+    <div class="crawl">
+      <p>{{ film.opening_crawl }}</p>
+    </div>
+  </div>
+
+  <div class="film-description">
+    <p>Lançamento: {{ film.release_date | date: "longDate" }}</p>
+    <h1>{{ film.title }}</h1>
+    <h2>Episode {{ film.episode_id | numberToRoman }}</h2>
+    <p class="director">{{ film.director }}</p>
+    <p class="producer">{{ film.producer }}</p>
+    <div class="button-group">
+      <button
+        *ngFor="let item of arrays"
+        [class.active]="whatToShow === item"
+        (click)="whatToShow = item"
+        role="button"
+      >
+        {{ item.toLocaleUpperCase() }}
+      </button>
+    </div>
+    <div class="array-info">
+      <div *ngFor="let item of data[whatToShow]?.data">
+        {{ item.name }}
+      </div>
+    </div>
+  </div>
+</div>

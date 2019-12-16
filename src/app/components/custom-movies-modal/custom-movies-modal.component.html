@@ -1,0 +1,76 @@
+<div class="modal-header">
+  <h5 class="modal-title pull-left">{{ title }}</h5>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="form" (submit)="submit()">
+  <div class="modal-body" *ngIf="people.length > 0">
+    <div class="form-group">
+      <label>Título</label>
+      <input type="text" class="form-control" formControlName="title" />
+      <div *ngIf="form.invalid">
+        <div *ngIf="form.hasError('required', 'title')" class="danger">
+          Título é obrigatório.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Diretor</label>
+      <input type="text" class="form-control" formControlName="director" />
+      <div *ngIf="form.invalid">
+        <div *ngIf="form.hasError('required', 'director')" class="danger">
+          Diretor é obrigatório.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Produtor</label>
+      <input type="text" class="form-control" formControlName="producer" />
+      <div *ngIf="form.invalid">
+        <div *ngIf="form.hasError('required', 'producer')" class="danger">
+          Produtor é obrigatório.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Personagens</label>
+      <ng-multiselect-dropdown
+        [placeholder]="'Selecione seus personagens'"
+        [data]="people"
+        formControlName="people"
+        [settings]="dropdownSettings"
+      >
+      </ng-multiselect-dropdown>
+      <div *ngIf="form.invalid">
+        <div *ngIf="form.hasError('required', 'people')" class="danger">
+          Personagens é obrigatório.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Abertura</label>
+      <textarea
+        class="form-control"
+        formControlName="opening_crawl"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" [disabled]="form.invalid">
+        {{ confirmBtnName }}
+      </button>
+      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">
+        {{ closeBtnName }}
+      </button>
+    </div>
+  </div>
+</form>

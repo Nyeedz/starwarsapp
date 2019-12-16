@@ -1,0 +1,40 @@
+<app-loading *ngIf="loading"> </app-loading>
+<div
+  *ngIf="!loading"
+  class="d-flex flex-column justify-content-center align-items-center"
+>
+  <form class="w-50" *ngIf="!loading" [formGroup]="form" (submit)="search()">
+    <div class="form-group row">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pesquisar"
+          aria-label="Pesquisar"
+          aria-describedby="pesquisar"
+          formControlName="search"
+        />
+        <div class="input-group-prepend ml" (click)="search()">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-films [films]="films" [title]="title" *ngIf="!loading"></app-films>
+<app-films
+  [films]="customFilms"
+  [character]="characterUrl"
+  title="Adicionados"
+  *ngIf="customFilms.length > 0 && !loading"
+></app-films>
+
+<div
+  class="floating-action-button btn-floating float-right mr-2"
+  (click)="createMovie()"
+  popover="Cadastrar filme"
+  triggers="mouseenter:mouseleave"
+  container="body"
+>
+  <i class="fas fa-book-open"></i>
+</div>

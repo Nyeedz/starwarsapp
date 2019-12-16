@@ -1,0 +1,135 @@
+.planet-image {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 3;
+  transform: translate(-50%, 50%);
+  height: 500px;
+  width: 500px;
+  user-select: none;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.planet-modal {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.planet-modal h1 {
+  color: yellow;
+  font-size: 4em;
+  font-family: Starjedi;
+  margin-bottom: 1em;
+  word-break: break-all;
+  text-align: center;
+}
+
+.planet-info {
+  display: flex;
+  position: relative;
+  z-index: 4;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.planet-info .item {
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: 1em;
+  align-items: center;
+  color: white;
+}
+
+i {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.item.rotation i {
+  animation: spin3d 4s linear infinite;
+}
+
+.item.orbit i {
+  animation: spin 4s linear infinite;
+}
+
+.item.gravity i {
+  animation: bounce 4s linear infinite;
+}
+
+.item.weather i {
+  animation: shake 4s linear infinite;
+}
+
+@keyframes spin3d {
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 4px, 0);
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

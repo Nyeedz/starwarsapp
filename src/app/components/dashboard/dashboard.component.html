@@ -1,0 +1,42 @@
+<div class="position-fixed background-container">
+  <div class="stars position-absolute d-block"></div>
+  <div class="twinkling position-absolute h-100"></div>
+  <div class="clouds position-absolute h-100"></div>
+</div>
+
+<div class="wrapper" [ngClass]="{ show: navbarOpen }">
+  <div
+    class="position-absolute h-100 sidebar-wrapper d-flex align-items-center flex-column"
+  >
+    <a [routerLink]="['/']"
+      ><img
+        src="assets/starwars-logo.png"
+        class="mt-4 mb-4 img-fluid"
+        width="200px"
+        alt=""
+    /></a>
+    <ul class="sidebar-nav">
+      <li><a class="link" [routerLink]="['/character']">Personagens</a></li>
+      <li><a class="link" [routerLink]="['/starships']">Naves espaciais</a></li>
+      <li><a class="link" [routerLink]="['/species']">Espécies</a></li>
+    </ul>
+  </div>
+
+  <div class="page-content-wrapper position-absolute h-100">
+    <div id="container">
+      <div id="burger" class="" (click)="toggleNavbar()">
+        <div class="bun top"></div>
+        <div class="filling"></div>
+        <div class="bun bottom"></div>
+      </div>
+    </div>
+    <!-- <button
+      class="navbar-toggler"
+      type="button btn-primary"
+      (click)="toggleNavbar()"
+    >
+      <i class="fas fa-bars"></i>
+    </button> -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

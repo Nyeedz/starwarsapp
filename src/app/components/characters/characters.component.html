@@ -1,0 +1,59 @@
+<app-loading *ngIf="loading"> </app-loading>
+<div class="content-wrapper" *ngIf="!loading">
+  <form class="mt-3 w-50" [formGroup]="form" (submit)="submit()">
+    <div class="form-group row">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pesquisar"
+          aria-label="Pesquisar"
+          aria-describedby="pesquisar"
+          formControlName="search"
+        />
+        <div class="input-group-prepend ml" (click)="submit()">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="w-80">
+    <table class="table table-borderless table-responsive">
+      <thead class="white">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Altura</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Data de nascimento</th>
+          <th scope="col">Gênero</th>
+          <th scope="col">Filmes</th>
+          <th scope="col">Terra natal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of people">
+          <td>{{ person.name }}</td>
+          <td>{{ person.height / 100 }} cm</td>
+          <td>{{ person.mass }} kg</td>
+          <td>{{ person.birth_year }}</td>
+          <td>{{ person.gender }}</td>
+          <td>
+            <div class="btn btn-light" (click)="films(person)">
+              Informações
+            </div>
+          </td>
+          <td>
+            <div class="btn btn-light" (click)="openModal(person.homeworld)">
+              Informações
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="next-page" *ngIf="next">
+      <button class="btn mt-3 btn-light float-right" (click)="nextPage()">
+        Próxima página
+      </button>
+    </div>
+  </div>
+</div>
